@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>firstName</key>
+		<string>Anakin</string>
+		<key>lastName</key>
+		<string>Skywalker</string>
+		<key>companyName</key>
+		<string>Galactic Empire</string>
+		<key>uniqueIdentifier</key>
+		<string>DARTH</string>
+		<key>company</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>firstName</key>
+		<string>Luke</string>
+		<key>lastName</key>
+		<string>Skywalker</string>
+		<key>companyName</key>
+		<string>The Force</string>
+		<key>uniqueIdentifier</key>
+		<string>LUKE</string>
+		<key>company</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>firstName</key>
+		<string>Padmé</string>
+		<key>lastName</key>
+		<string>Amidala</string>
+		<key>companyName</key>
+		<string>Queen of Naboo</string>
+		<key>uniqueIdentifier</key>
+		<string>PADME</string>
+		<key>company</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>firstName</key>
+		<string>Watto</string>
+		<key>companyName</key>
+		<string>Watto&apos;s Shop</string>
+		<key>uniqueIdentifier</key>
+		<string>WATTO</string>
+		<key>company</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>companyName</key>
+		<string>Chalmun&apos;s Spaceport Cantina</string>
+		<key>uniqueIdentifier</key>
+		<string>CANTINA</string>
+		<key>company</key>
+		<true/>
+	</dict>
+	<dict>
+		<key>lastName</key>
+		<string>Porkins</string>
+		<key>companyName</key>
+		<string>Alliance to Restore the Republic</string>
+		<key>uniqueIdentifier</key>
+		<string>RED-SIX</string>
+		<key>company</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>firstName</key>
+		<string>R2-D2</string>
+		<key>uniqueIdentifier</key>
+		<string>ARTOO</string>
+		<key>company</key>
+		<false/>
+	</dict>
+	<dict>
+		<key>firstName</key>
+		<string>Boba</string>
+		<key>lastName</key>
+		<string>Fett</string>
+		<key>companyName</key>
+		<string>Self-Employed</string>
+		<key>uniqueIdentifier</key>
+		<string>BOBA</string>
+		<key>company</key>
+		<false/>
+	</dict>
+</array>
+</plist>
