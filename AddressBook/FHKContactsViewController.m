@@ -110,7 +110,7 @@ static NSString * const FHKShowContactDetailSegue = @"Show Contact Detail";
 
 #pragma mark - Contact Results View Controller Delegate
 
-- (void)tappedOnContact:(FHKContact *)contact
+- (void)resultsController:(FHKContactResultsViewController *)controller didSelectContact:(FHKContact *)contact
 {
     FHKContactDetailViewController *detailVC = [self.storyboard instantiateViewControllerWithIdentifier:FHKContactDetailViewController.storyboardIdentifier];
     detailVC.contact = contact;

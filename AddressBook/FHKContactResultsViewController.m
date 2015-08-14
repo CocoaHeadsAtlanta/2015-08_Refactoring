@@ -88,7 +88,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.delegate tappedOnContact:self.filteredContacts[indexPath.row]];
+    [self.delegate resultsController:self didSelectContact:self.filteredContacts[indexPath.row]];
 }
 
 #pragma mark - Search Controller Results Updater

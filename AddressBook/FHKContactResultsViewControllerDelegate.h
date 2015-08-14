@@ -3,9 +3,10 @@
 //
 
 @class FHKContact;
+@class FHKContactResultsViewController;
 
 @protocol FHKContactResultsViewControllerDelegate <NSObject>
 
-- (void)tappedOnContact:(FHKContact *)contact;
+- (void)resultsController:(FHKContactResultsViewController *)controller didSelectContact:(FHKContact *)contact;
 
 @end
