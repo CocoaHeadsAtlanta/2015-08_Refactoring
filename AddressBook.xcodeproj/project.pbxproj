@@ -18,6 +18,7 @@
 		2A1DC7C31B7ABB5D005DAFC0 /* FHKContactResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A1DC7C21B7ABB5D005DAFC0 /* FHKContactResultsViewController.m */; };
 		2A1DC7C61B7AC2D8005DAFC0 /* FHKContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A1DC7C51B7AC2D8005DAFC0 /* FHKContact.m */; };
 		2A75AC961B7DA30F007682CD /* SplitViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A75AC951B7DA30F007682CD /* SplitViewControllerDelegate.swift */; };
+		2A75AC981B7DA4DB007682CD /* ContactsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A75AC971B7DA4DB007682CD /* ContactsDataSource.swift */; };
 		2AA0C4461B7BF4C50000C395 /* AddressBook.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2AA0C4451B7BF4C50000C395 /* AddressBook.plist */; };
 		2AA0C44C1B7CD1620000C395 /* DARTH.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2AA0C44B1B7CD1620000C395 /* DARTH.plist */; };
 		2AA0C44E1B7CD1A40000C395 /* LUKE.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2AA0C44D1B7CD1A40000C395 /* LUKE.plist */; };
@@ -62,6 +63,7 @@
 		2A75AC931B7D96CE007682CD /* FHKContactResultsViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FHKContactResultsViewControllerDelegate.h; sourceTree = "<group>"; };
 		2A75AC941B7DA30F007682CD /* AddressBook-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AddressBook-Bridging-Header.h"; sourceTree = "<group>"; };
 		2A75AC951B7DA30F007682CD /* SplitViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitViewControllerDelegate.swift; sourceTree = "<group>"; };
+		2A75AC971B7DA4DB007682CD /* ContactsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsDataSource.swift; sourceTree = "<group>"; };
 		2AA0C4451B7BF4C50000C395 /* AddressBook.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AddressBook.plist; sourceTree = "<group>"; };
 		2AA0C44B1B7CD1620000C395 /* DARTH.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DARTH.plist; sourceTree = "<group>"; };
 		2AA0C44D1B7CD1A40000C395 /* LUKE.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LUKE.plist; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				2A1DC7911B7AB8C0005DAFC0 /* AppDelegate.h */,
 				2A1DC7921B7AB8C0005DAFC0 /* AppDelegate.m */,
 				2A75AC951B7DA30F007682CD /* SplitViewControllerDelegate.swift */,
+				2A75AC971B7DA4DB007682CD /* ContactsDataSource.swift */,
 				2A1DC7B61B7AB9F7005DAFC0 /* FHKContactsViewController.h */,
 				2A1DC7B71B7AB9F7005DAFC0 /* FHKContactsViewController.m */,
 				2A75AC931B7D96CE007682CD /* FHKContactResultsViewControllerDelegate.h */,
@@ -279,6 +282,7 @@
 			files = (
 				2A1DC7C31B7ABB5D005DAFC0 /* FHKContactResultsViewController.m in Sources */,
 				2A75AC961B7DA30F007682CD /* SplitViewControllerDelegate.swift in Sources */,
+				2A75AC981B7DA4DB007682CD /* ContactsDataSource.swift in Sources */,
 				2A1DC7BB1B7ABA12005DAFC0 /* FHKContactDetailViewController.m in Sources */,
 				2A1DC7931B7AB8C0005DAFC0 /* AppDelegate.m in Sources */,
 				2A1DC7B81B7AB9F7005DAFC0 /* FHKContactsViewController.m in Sources */,

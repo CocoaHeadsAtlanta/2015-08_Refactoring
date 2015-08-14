@@ -7,20 +7,48 @@
 #import "FHKContactResultsViewControllerDelegate.h"
 #import "FHKContactDetailViewController.h"
 #import "FHKContact.h"
+#import "AddressBook-Swift.h"
 
 @interface FHKContactsViewController () <FHKContactResultsViewControllerDelegate>
 
 @property (strong, nonatomic) FHKContactResultsViewController *resultsController;
 @property (strong, nonatomic) UISearchController *searchController;
 
-@property (strong, nonatomic) NSArray *contacts;
+@property (strong, nonatomic) ContactsDataSource *dataSource;
 
 @end
 
-static NSString * const FHKContactCellIdentifier = @"Contact Cell";
 static NSString * const FHKShowContactDetailSegue = @"Show Contact Detail";
 
 @implementation FHKContactsViewController
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        NSURL *addressBookLocation = [[NSBundle mainBundle] URLForResource:@"AddressBook" withExtension:@"plist"];
+        NSData *addressBookData = [NSData dataWithContentsOfURL:addressBookLocation];
+        NSArray *addressBookEntries = [NSPropertyListSerialization propertyListWithData:addressBookData
+                                                                                options:NSPropertyListImmutable
+                                                                                 format:NULL
+                                                                                  error:NULL];
+        
+        NSArray *contacts = @[];
+        for (NSDictionary *entry in addressBookEntries) {
+            FHKContact *contact = [[FHKContact alloc] initWithPropertyList:entry];
+            if (contact != nil) {
+                contacts = [contacts arrayByAddingObject:contact];
+            }
+        }
+        
+        _dataSource = [[ContactsDataSource alloc] initWithContacts:contacts
+                                                         configure:^(FHKContact *contact, UITableViewCell *cell) {
+                                                             cell.textLabel.text = contact.localizedDisplayName;
+                                                         }];
+    }
+    
+    return self;
+}
 
 - (BOOL)definesPresentationContext
 {
@@ -32,7 +60,6 @@ static NSString * const FHKShowContactDetailSegue = @"Show Contact Detail";
     if (!_resultsController) {
         FHKContactResultsViewController *results = [self.storyboard instantiateViewControllerWithIdentifier:FHKContactResultsViewController.storyboardIdentifier];
         results.delegate = self;
-        results.cellIdentifier = FHKContactCellIdentifier;
         
         self.resultsController = results;
     }
@@ -59,23 +86,7 @@ static NSString * const FHKShowContactDetailSegue = @"Show Contact Detail";
 {
     [super viewDidLoad];
     
-    NSURL *addressBookLocation = [[NSBundle mainBundle] URLForResource:@"AddressBook" withExtension:@"plist"];
-    NSData *addressBookData = [NSData dataWithContentsOfURL:addressBookLocation];
-    NSArray *addressBookEntries = [NSPropertyListSerialization propertyListWithData:addressBookData
-                                                                            options:NSPropertyListImmutable
-                                                                             format:NULL
-                                                                              error:NULL];
-    
-    NSArray *contacts = @[];
-    for (NSDictionary *entry in addressBookEntries) {
-        FHKContact *contact = [[FHKContact alloc] initWithPropertyList:entry];
-        if (contact != nil) {
-            contacts = [contacts arrayByAddingObject:contact];
-        }
-    }
-    
-    self.contacts = contacts;
-    
+    self.tableView.dataSource = self.dataSource;
     self.tableView.tableHeaderView = self.searchController.searchBar;
 }
 
@@ -84,28 +95,8 @@ static NSString * const FHKShowContactDetailSegue = @"Show Contact Detail";
     if ([segue.identifier isEqualToString:FHKShowContactDetailSegue]) {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         FHKContactDetailViewController *detailVC = (FHKContactDetailViewController *)[segue.destinationViewController topViewController];
-        detailVC.contact = self.contacts[indexPath.row];
+        detailVC.contact = [self.dataSource contactForIndexPath:indexPath];
     }
-}
-
-#pragma mark - Table View Data Source
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    NSAssert(section == 0, @"Unexpected section number: %li", (long)section);
-    return self.contacts.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FHKContactCellIdentifier
-                                                            forIndexPath:indexPath];
-    
-    FHKContact *contact = self.contacts[indexPath.row];
-    
-    cell.textLabel.text = contact.localizedDisplayName;
-    
-    return cell;
 }
 
 #pragma mark - Contact Results View Controller Delegate
