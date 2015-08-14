@@ -58,6 +58,7 @@
 		2A1DC7C21B7ABB5D005DAFC0 /* FHKContactResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHKContactResultsViewController.m; sourceTree = "<group>"; };
 		2A1DC7C41B7AC2D8005DAFC0 /* FHKContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHKContact.h; sourceTree = "<group>"; };
 		2A1DC7C51B7AC2D8005DAFC0 /* FHKContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHKContact.m; sourceTree = "<group>"; };
+		2A75AC931B7D96CE007682CD /* FHKContactResultsViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FHKContactResultsViewControllerDelegate.h; sourceTree = "<group>"; };
 		2AA0C4451B7BF4C50000C395 /* AddressBook.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AddressBook.plist; sourceTree = "<group>"; };
 		2AA0C44B1B7CD1620000C395 /* DARTH.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DARTH.plist; sourceTree = "<group>"; };
 		2AA0C44D1B7CD1A40000C395 /* LUKE.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LUKE.plist; sourceTree = "<group>"; };
@@ -112,6 +113,7 @@
 				2A1DC7921B7AB8C0005DAFC0 /* AppDelegate.m */,
 				2A1DC7B61B7AB9F7005DAFC0 /* FHKContactsViewController.h */,
 				2A1DC7B71B7AB9F7005DAFC0 /* FHKContactsViewController.m */,
+				2A75AC931B7D96CE007682CD /* FHKContactResultsViewControllerDelegate.h */,
 				2A1DC7C11B7ABB5D005DAFC0 /* FHKContactResultsViewController.h */,
 				2A1DC7C21B7ABB5D005DAFC0 /* FHKContactResultsViewController.m */,
 				2A1DC7B91B7ABA12005DAFC0 /* FHKContactDetailViewController.h */,

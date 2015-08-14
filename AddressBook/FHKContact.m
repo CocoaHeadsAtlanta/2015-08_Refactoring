@@ -4,17 +4,25 @@
 
 #import "FHKContact.h"
 
+static NSString * const FHKContactKeyForIdentifier = @"uniqueIdentifier";
+static NSString * const FHKContactKeyForFirstName = @"firstName";
+static NSString * const FHKContactKeyForLastName = @"lastName";
+static NSString * const FHKContactKeyForCompanyName = @"companyName";
+static NSString * const FHKContactKeyForIsCompanyBool = @"company";
+NSString * const FHKContactKeyForEmail = @"email";
+NSString * const FHKContactKeyForPhoneNumber = @"phoneNumber";
+
 @implementation FHKContact
 
 - (id)initWithPropertyList:(NSDictionary *)propertyList
 {
     self = [super init];
     if (self) {
-        _uniqueIdentifier = propertyList[@"uniqueIdentifier"];
-        _firstName = propertyList[@"firstName"];
-        _lastName = propertyList[@"lastName"];
-        _companyName = propertyList[@"companyName"];
-        _company = [propertyList[@"company"] boolValue];
+        _uniqueIdentifier = propertyList[FHKContactKeyForIdentifier];
+        _firstName = propertyList[FHKContactKeyForFirstName];
+        _lastName = propertyList[FHKContactKeyForLastName];
+        _companyName = propertyList[FHKContactKeyForCompanyName];
+        _company = [propertyList[FHKContactKeyForIsCompanyBool] boolValue];
     }
     
     return self;

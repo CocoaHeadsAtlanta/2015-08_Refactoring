@@ -2,12 +2,14 @@
 //  Copyright (c) 2015 Fish Hook LLC. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
-#import "FHKContact.h"
+@class FHKContact;
 
 @interface FHKContactDetailViewController : UITableViewController
 
 @property (strong, nonatomic) FHKContact *contact;
+
++ (NSString *)storyboardIdentifier;
 
 @end

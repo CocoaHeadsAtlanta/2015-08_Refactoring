@@ -3,7 +3,22 @@
 //
 
 #import "FHKContactsViewController.h"
+#import "FHKContactResultsViewController.h"
+#import "FHKContactResultsViewControllerDelegate.h"
 #import "FHKContactDetailViewController.h"
+#import "FHKContact.h"
+
+@interface FHKContactsViewController () <FHKContactResultsViewControllerDelegate>
+
+@property (strong, nonatomic) FHKContactResultsViewController *resultsController;
+@property (strong, nonatomic) UISearchController *searchController;
+
+@property (strong, nonatomic) NSArray *contacts;
+
+@end
+
+static NSString * const FHKContactCellIdentifier = @"Contact Cell";
+static NSString * const FHKShowContactDetailSegue = @"Show Contact Detail";
 
 @implementation FHKContactsViewController
 
@@ -33,8 +48,9 @@
     
     self.contacts = contacts;
     
-    FHKContactResultsViewController *results = [self.storyboard instantiateViewControllerWithIdentifier:@"Contact Results"];
+    FHKContactResultsViewController *results = [self.storyboard instantiateViewControllerWithIdentifier:FHKContactResultsViewController.storyboardIdentifier];
     results.delegate = self;
+    results.cellIdentifier = FHKContactCellIdentifier;
     self.resultsController = results;
     
     UISearchController *searchController = [[UISearchController alloc] initWithSearchResultsController:results];
@@ -48,7 +64,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"Show Contact Detail"]) {
+    if ([segue.identifier isEqualToString:FHKShowContactDetailSegue]) {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         FHKContactDetailViewController *detailVC = (FHKContactDetailViewController *)[segue.destinationViewController topViewController];
         detailVC.contact = self.contacts[indexPath.row];
@@ -57,27 +73,16 @@
 
 #pragma mark - Table View Data Source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) {
-        return self.contacts.count;
-    }
-    else {
-        return 0;
-    }
+    NSAssert(section == 0, @"Unexpected section number: %li", (long)section);
+    return self.contacts.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Contact Cell"];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Contact Cell"];
-    }
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FHKContactCellIdentifier
+                                                            forIndexPath:indexPath];
     
     FHKContact *contact = self.contacts[indexPath.row];
     
@@ -105,9 +110,9 @@
 
 #pragma mark - Contact Results View Controller Delegate
 
-- (void)tappedOnContact:(FHKContact *)contact
+- (void)resultsController:(FHKContactResultsViewController *)controller didSelectContact:(FHKContact *)contact
 {
-    FHKContactDetailViewController *detailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Contact Details"];
+    FHKContactDetailViewController *detailVC = [self.storyboard instantiateViewControllerWithIdentifier:FHKContactDetailViewController.storyboardIdentifier];
     detailVC.contact = contact;
     
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:detailVC];

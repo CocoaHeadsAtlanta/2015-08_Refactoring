@@ -3,9 +3,23 @@
 //
 
 #import "FHKContactResultsViewController.h"
+#import "FHKContactResultsViewControllerDelegate.h"
 #import "FHKContact.h"
 
+@interface FHKContactResultsViewController ()
+
+@property (strong, nonatomic) NSArray *contacts;
+@property (strong, nonatomic) NSArray *filteredContacts;
+@property (strong, nonatomic) NSString *searchTerm;
+
+@end
+
 @implementation FHKContactResultsViewController
+
++ (NSString *)storyboardIdentifier
+{
+    return @"Contact Results";
+}
 
 - (void)viewDidLoad
 {
@@ -31,27 +45,16 @@
 
 #pragma mark - Table View Data Source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) {
-        return self.filteredContacts.count;
-    }
-    else {
-        return 0;
-    }
+    NSAssert(section == 0, @"Unexpected section number: %li", (long)section);
+    return self.filteredContacts.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Contact Cell"];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Contact Cell"];
-    }
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.cellIdentifier
+                                                            forIndexPath:indexPath];
     
     FHKContact *contact = self.filteredContacts[indexPath.row];
     
@@ -85,7 +88,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.delegate tappedOnContact:self.filteredContacts[indexPath.row]];
+    [self.delegate resultsController:self didSelectContact:self.filteredContacts[indexPath.row]];
 }
 
 #pragma mark - Search Controller Results Updater
