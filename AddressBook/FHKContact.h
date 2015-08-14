@@ -20,3 +20,6 @@
 - (id)initWithPropertyList:(NSDictionary *)propertyList;
 
 @end
+
+extern NSString * const FHKContactKeyForEmail;
+extern NSString * const FHKContactKeyForPhoneNumber;

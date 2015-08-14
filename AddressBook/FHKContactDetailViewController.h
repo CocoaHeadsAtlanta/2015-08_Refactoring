@@ -10,4 +10,6 @@
 
 @property (strong, nonatomic) FHKContact *contact;
 
++ (NSString *)storyboardIdentifier;
+
 @end

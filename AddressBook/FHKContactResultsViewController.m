@@ -16,6 +16,11 @@
 
 @implementation FHKContactResultsViewController
 
++ (NSString *)storyboardIdentifier
+{
+    return @"Contact Results";
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -52,7 +57,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Contact Cell" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.cellIdentifier
+                                                            forIndexPath:indexPath];
     
     FHKContact *contact = self.filteredContacts[indexPath.row];
     

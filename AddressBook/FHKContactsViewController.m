@@ -17,6 +17,9 @@
 
 @end
 
+static NSString * const FHKContactCellIdentifier = @"Contact Cell";
+static NSString * const FHKShowContactDetailSegue = @"Show Contact Detail";
+
 @implementation FHKContactsViewController
 
 - (BOOL)definesPresentationContext
@@ -45,8 +48,9 @@
     
     self.contacts = contacts;
     
-    FHKContactResultsViewController *results = [self.storyboard instantiateViewControllerWithIdentifier:@"Contact Results"];
+    FHKContactResultsViewController *results = [self.storyboard instantiateViewControllerWithIdentifier:FHKContactResultsViewController.storyboardIdentifier];
     results.delegate = self;
+    results.cellIdentifier = FHKContactCellIdentifier;
     self.resultsController = results;
     
     UISearchController *searchController = [[UISearchController alloc] initWithSearchResultsController:results];
@@ -60,7 +64,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"Show Contact Detail"]) {
+    if ([segue.identifier isEqualToString:FHKShowContactDetailSegue]) {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         FHKContactDetailViewController *detailVC = (FHKContactDetailViewController *)[segue.destinationViewController topViewController];
         detailVC.contact = self.contacts[indexPath.row];
@@ -81,7 +85,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Contact Cell" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:FHKContactCellIdentifier
+                                                            forIndexPath:indexPath];
     
     FHKContact *contact = self.contacts[indexPath.row];
     
@@ -111,7 +116,7 @@
 
 - (void)tappedOnContact:(FHKContact *)contact
 {
-    FHKContactDetailViewController *detailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"Contact Details"];
+    FHKContactDetailViewController *detailVC = [self.storyboard instantiateViewControllerWithIdentifier:FHKContactDetailViewController.storyboardIdentifier];
     detailVC.contact = contact;
     
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:detailVC];
