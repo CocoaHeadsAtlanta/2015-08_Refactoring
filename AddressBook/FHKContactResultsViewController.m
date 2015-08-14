@@ -58,23 +58,7 @@
     
     FHKContact *contact = self.filteredContacts[indexPath.row];
     
-    NSString *string = @"";
-    
-    if (contact.isCompany) {
-        string = contact.companyName;
-    }
-    else {
-        if (contact.firstName) {
-            string = [string stringByAppendingString:contact.firstName];
-        }
-        if (contact.lastName) {
-            if (string.length > 0) {
-                string = [string stringByAppendingString:@" "];
-            }
-            
-            string = [string stringByAppendingString:contact.lastName];
-        }
-    }
+    NSString *string = contact.localizedDisplayName;
     
     NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] initWithString:string];
     [mutableAttributedString addAttribute:NSBackgroundColorAttributeName value:[UIColor yellowColor] range:[string rangeOfString:self.searchTerm]];

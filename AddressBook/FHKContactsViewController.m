@@ -103,24 +103,7 @@ static NSString * const FHKShowContactDetailSegue = @"Show Contact Detail";
     
     FHKContact *contact = self.contacts[indexPath.row];
     
-    if (contact.isCompany) {
-        cell.textLabel.text = contact.companyName;
-    }
-    else {
-        NSString *fullName = @"";
-        if (contact.firstName) {
-            fullName = [fullName stringByAppendingString:contact.firstName];
-        }
-        if (contact.lastName) {
-            if (fullName.length > 0) {
-                fullName = [fullName stringByAppendingString:@" "];
-            }
-            
-            fullName = [fullName stringByAppendingString:contact.lastName];
-        }
-        
-        cell.textLabel.text = fullName;
-    }
+    cell.textLabel.text = contact.localizedDisplayName;
     
     return cell;
 }

@@ -15,11 +15,15 @@
 @property (strong, nonatomic) NSString *email;
 @property (strong, nonatomic) NSString *phoneNumber;
 
-@property (assign, nonatomic, readonly, getter = isCompany) BOOL company;
-
 - (id)initWithPropertyList:(NSDictionary *)propertyList;
 
 @end
 
 extern NSString * const FHKContactKeyForEmail;
 extern NSString * const FHKContactKeyForPhoneNumber;
+
+@interface FHKContact (CellSupport)
+
+@property (strong, nonatomic, readonly) NSString *localizedDisplayName;
+
+@end
