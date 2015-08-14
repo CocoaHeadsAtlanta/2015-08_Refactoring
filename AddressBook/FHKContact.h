@@ -12,15 +12,13 @@
 @property (strong, nonatomic, readonly) NSString *lastName;
 @property (strong, nonatomic, readonly) NSString *companyName;
 
-@property (strong, nonatomic) NSString *email;
-@property (strong, nonatomic) NSString *phoneNumber;
+@property (strong, nonatomic, readonly) NSString *email;
+@property (strong, nonatomic, readonly) NSString *phoneNumber;
 
 - (id)initWithPropertyList:(NSDictionary *)propertyList;
+- (void)updateWithPropertyList:(NSDictionary *)propertyList;
 
 @end
-
-extern NSString * const FHKContactKeyForEmail;
-extern NSString * const FHKContactKeyForPhoneNumber;
 
 @interface FHKContact (CellSupport)
 

@@ -7,6 +7,8 @@
 @interface FHKContact ()
 
 @property (assign, nonatomic, readonly, getter = isCompany) BOOL company;
+@property (strong, nonatomic) NSString *email;
+@property (strong, nonatomic) NSString *phoneNumber;
 
 @end
 
@@ -15,8 +17,8 @@ static NSString * const FHKContactKeyForFirstName = @"firstName";
 static NSString * const FHKContactKeyForLastName = @"lastName";
 static NSString * const FHKContactKeyForCompanyName = @"companyName";
 static NSString * const FHKContactKeyForIsCompanyBool = @"company";
-NSString * const FHKContactKeyForEmail = @"email";
-NSString * const FHKContactKeyForPhoneNumber = @"phoneNumber";
+static NSString * const FHKContactKeyForEmail = @"email";
+static NSString * const FHKContactKeyForPhoneNumber = @"phoneNumber";
 
 @implementation FHKContact
 
@@ -32,6 +34,12 @@ NSString * const FHKContactKeyForPhoneNumber = @"phoneNumber";
     }
     
     return self;
+}
+
+- (void)updateWithPropertyList:(NSDictionary *)propertyList
+{
+    self.email = propertyList[FHKContactKeyForEmail];
+    self.phoneNumber = propertyList[FHKContactKeyForPhoneNumber];
 }
 
 @end

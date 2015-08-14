@@ -29,8 +29,7 @@ static NSString * const FHKPhoneCellIdentifier = @"Phone Number Cell";
                                                                        format:NULL
                                                                         error:NULL];
     
-    self.contact.email = contact[FHKContactKeyForEmail];
-    self.contact.phoneNumber = contact[FHKContactKeyForPhoneNumber];
+    [self.contact updateWithPropertyList:contact];
 }
 
 #pragma mark - Table View Data Source
