@@ -4,8 +4,6 @@
 
 @import UIKit;
 
-@class FHKContact;
-
 @protocol FHKContactResultsViewControllerDelegate;
 
 @interface FHKContactResultsViewController : UITableViewController <UISearchResultsUpdating>
