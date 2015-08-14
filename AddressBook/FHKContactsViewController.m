@@ -75,12 +75,8 @@ static NSString * const FHKShowContactDetailSegue = @"Show Contact Detail";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) {
-        return self.contacts.count;
-    }
-    else {
-        return 0;
-    }
+    NSAssert(section == 0, @"Unexpected section number: %li", (long)section);
+    return self.contacts.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
