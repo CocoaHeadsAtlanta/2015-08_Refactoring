@@ -3,8 +3,11 @@
 //
 
 #import "AppDelegate.h"
+#import "AddressBook-Swift.h"
 
-@interface AppDelegate () <UISplitViewControllerDelegate>
+@interface AppDelegate ()
+
+@property (strong, nonatomic) SplitViewControllerDelegate *splitViewControllerDelegate;
 
 @end
 
@@ -14,16 +17,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
-    splitViewController.delegate = self;
+    SplitViewControllerDelegate *delegate = [[SplitViewControllerDelegate alloc] init];
+    self.splitViewControllerDelegate = delegate;
     
-    return YES;
-}
-
-#pragma mark - Split View Controller Delegate
-
-- (BOOL)splitViewController:(UISplitViewController *)splitViewController collapseSecondaryViewController:(UIViewController *)secondaryViewController ontoPrimaryViewController:(UIViewController *)primaryViewController
-{
+    UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
+    splitViewController.delegate = self.splitViewControllerDelegate;
+    
     return YES;
 }
 
