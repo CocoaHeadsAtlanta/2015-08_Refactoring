@@ -3,6 +3,7 @@
 //
 
 #import "FHKContactDetailViewController.h"
+#import "FHKContact.h"
 
 @implementation FHKContactDetailViewController
 

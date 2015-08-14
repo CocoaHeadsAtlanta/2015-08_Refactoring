@@ -2,7 +2,8 @@
 //  Copyright (c) 2015 Fish Hook LLC. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
+
 #import "FHKContactResultsViewController.h"
 
 @interface FHKContactsViewController : UITableViewController <FHKContactResultsViewControllerDelegate>

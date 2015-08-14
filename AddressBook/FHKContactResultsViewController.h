@@ -2,8 +2,9 @@
 //  Copyright (c) 2015 Fish Hook LLC. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "FHKContact.h"
+@import UIKit;
+
+@class FHKContact;
 
 @protocol FHKContactResultsViewControllerDelegate;
 

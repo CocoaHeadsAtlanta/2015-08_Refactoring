@@ -4,6 +4,7 @@
 
 #import "FHKContactsViewController.h"
 #import "FHKContactDetailViewController.h"
+#import "FHKContact.h"
 
 @implementation FHKContactsViewController
 
