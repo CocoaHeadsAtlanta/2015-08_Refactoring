@@ -27,6 +27,34 @@ static NSString * const FHKShowContactDetailSegue = @"Show Contact Detail";
     return YES;
 }
 
+- (FHKContactResultsViewController *)resultsController
+{
+    if (!_resultsController) {
+        FHKContactResultsViewController *results = [self.storyboard instantiateViewControllerWithIdentifier:FHKContactResultsViewController.storyboardIdentifier];
+        results.delegate = self;
+        results.cellIdentifier = FHKContactCellIdentifier;
+        
+        self.resultsController = results;
+    }
+    
+    return _resultsController;
+}
+
+- (UISearchController *)searchController
+{
+    if (!_searchController) {
+        UISearchController *searchController = [[UISearchController alloc] initWithSearchResultsController:self.resultsController];
+        searchController.searchResultsUpdater = self.resultsController;
+        [searchController.searchBar sizeToFit];
+        
+        self.searchController = searchController;
+    }
+    
+    return _searchController;
+}
+
+#pragma mark - View Controller Life Cycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -48,18 +76,7 @@ static NSString * const FHKShowContactDetailSegue = @"Show Contact Detail";
     
     self.contacts = contacts;
     
-    FHKContactResultsViewController *results = [self.storyboard instantiateViewControllerWithIdentifier:FHKContactResultsViewController.storyboardIdentifier];
-    results.delegate = self;
-    results.cellIdentifier = FHKContactCellIdentifier;
-    self.resultsController = results;
-    
-    UISearchController *searchController = [[UISearchController alloc] initWithSearchResultsController:results];
-    searchController.searchResultsUpdater = results;
-    [searchController.searchBar sizeToFit];
-    
-    self.searchController = searchController;
-    
-    self.tableView.tableHeaderView = searchController.searchBar;
+    self.tableView.tableHeaderView = self.searchController.searchBar;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
