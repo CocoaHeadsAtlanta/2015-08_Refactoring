@@ -3,8 +3,19 @@
 //
 
 #import "FHKContactsViewController.h"
+#import "FHKContactResultsViewController.h"
+#import "FHKContactResultsViewControllerDelegate.h"
 #import "FHKContactDetailViewController.h"
 #import "FHKContact.h"
+
+@interface FHKContactsViewController () <FHKContactResultsViewControllerDelegate>
+
+@property (strong, nonatomic) FHKContactResultsViewController *resultsController;
+@property (strong, nonatomic) UISearchController *searchController;
+
+@property (strong, nonatomic) NSArray *contacts;
+
+@end
 
 @implementation FHKContactsViewController
 

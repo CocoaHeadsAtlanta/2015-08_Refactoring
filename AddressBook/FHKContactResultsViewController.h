@@ -10,15 +10,6 @@
 
 @interface FHKContactResultsViewController : UITableViewController <UISearchResultsUpdating>
 
-@property (strong, nonatomic) NSArray *contacts;
-@property (strong, nonatomic) NSArray *filteredContacts;
-@property (strong, nonatomic) NSString *searchTerm;
 @property (weak, nonatomic) id<FHKContactResultsViewControllerDelegate> delegate;
-
-@end
-
-@protocol FHKContactResultsViewControllerDelegate <NSObject>
-
-- (void)tappedOnContact:(FHKContact *)contact;
 
 @end
