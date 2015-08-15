@@ -28,6 +28,8 @@
 		2AA0C4721B7CE04C0000C395 /* RED-SIX.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2AA0C4711B7CE04C0000C395 /* RED-SIX.plist */; };
 		2AA0C4741B7CE07B0000C395 /* ARTOO.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2AA0C4731B7CE07B0000C395 /* ARTOO.plist */; };
 		2AA0C4761B7CE0D10000C395 /* BOBA.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2AA0C4751B7CE0D10000C395 /* BOBA.plist */; };
+		2AEAA1891B7ECF9700875851 /* _FHKContactPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEAA1881B7ECF9700875851 /* _FHKContactPerson.swift */; };
+		2AEAA18B1B7ED11F00875851 /* _FHKContactCompany.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AEAA18A1B7ED11F00875851 /* _FHKContactCompany.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,8 @@
 		2AA0C4711B7CE04C0000C395 /* RED-SIX.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "RED-SIX.plist"; sourceTree = "<group>"; };
 		2AA0C4731B7CE07B0000C395 /* ARTOO.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ARTOO.plist; sourceTree = "<group>"; };
 		2AA0C4751B7CE0D10000C395 /* BOBA.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BOBA.plist; sourceTree = "<group>"; };
+		2AEAA1881B7ECF9700875851 /* _FHKContactPerson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _FHKContactPerson.swift; sourceTree = "<group>"; };
+		2AEAA18A1B7ED11F00875851 /* _FHKContactCompany.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _FHKContactCompany.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +131,8 @@
 				2A1DC7BA1B7ABA12005DAFC0 /* FHKContactDetailViewController.m */,
 				2A1DC7C41B7AC2D8005DAFC0 /* FHKContact.h */,
 				2A1DC7C51B7AC2D8005DAFC0 /* FHKContact.m */,
+				2AEAA1881B7ECF9700875851 /* _FHKContactPerson.swift */,
+				2AEAA18A1B7ED11F00875851 /* _FHKContactCompany.swift */,
 				2A1DC79A1B7AB8C0005DAFC0 /* Main.storyboard */,
 				2A1DC79D1B7AB8C0005DAFC0 /* Images.xcassets */,
 				2A1DC79F1B7AB8C0005DAFC0 /* LaunchScreen.xib */,
@@ -280,7 +286,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AEAA1891B7ECF9700875851 /* _FHKContactPerson.swift in Sources */,
 				2A1DC7C31B7ABB5D005DAFC0 /* FHKContactResultsViewController.m in Sources */,
+				2AEAA18B1B7ED11F00875851 /* _FHKContactCompany.swift in Sources */,
 				2A75AC961B7DA30F007682CD /* SplitViewControllerDelegate.swift in Sources */,
 				2A75AC981B7DA4DB007682CD /* ContactsDataSource.swift in Sources */,
 				2A1DC7BB1B7ABA12005DAFC0 /* FHKContactDetailViewController.m in Sources */,

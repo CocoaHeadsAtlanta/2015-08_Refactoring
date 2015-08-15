@@ -3,6 +3,7 @@
 //
 
 #import "FHKContact.h"
+#import "AddressBook-Swift.h"
 
 @interface FHKContact ()
 
@@ -24,13 +25,19 @@ static NSString * const FHKContactKeyForPhoneNumber = @"phoneNumber";
 
 - (id)initWithPropertyList:(NSDictionary *)propertyList
 {
-    self = [super init];
+    BOOL isCompany = [propertyList[FHKContactKeyForIsCompanyBool] boolValue];
+    if (isCompany) {
+        self = [[_FHKContactCompany alloc] init];
+    }
+    else {
+        self = [[_FHKContactPerson alloc] init];
+    }
+    
     if (self) {
         _uniqueIdentifier = propertyList[FHKContactKeyForIdentifier];
         _firstName = propertyList[FHKContactKeyForFirstName];
         _lastName = propertyList[FHKContactKeyForLastName];
         _companyName = propertyList[FHKContactKeyForCompanyName];
-        _company = [propertyList[FHKContactKeyForIsCompanyBool] boolValue];
     }
     
     return self;
@@ -40,33 +47,6 @@ static NSString * const FHKContactKeyForPhoneNumber = @"phoneNumber";
 {
     self.email = propertyList[FHKContactKeyForEmail];
     self.phoneNumber = propertyList[FHKContactKeyForPhoneNumber];
-}
-
-@end
-
-@implementation FHKContact (CellSupport)
-
-- (NSString *)localizedDisplayName
-{
-    NSMutableString *localizedDisplayName = [NSMutableString stringWithString:@""];
-    
-    if (self.isCompany) {
-        [localizedDisplayName appendString:self.companyName];
-    }
-    else {
-        if (self.firstName) {
-            [localizedDisplayName appendString:self.firstName];
-        }
-        if (self.lastName) {
-            if (localizedDisplayName.length > 0) {
-                [localizedDisplayName appendString:@" "];
-            }
-            
-            [localizedDisplayName appendString:self.lastName];
-        }
-    }
-    
-    return [localizedDisplayName copy];
 }
 
 @end
